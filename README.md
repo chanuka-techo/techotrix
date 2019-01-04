@@ -22,16 +22,20 @@ Static build
 
     CGO_ENABLED=0 go build -o bin/techotrix -a -ldflags '-s' techotrix.go
 
+If you are building on a mac >_<
+
+    env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/techotrix -a -ldflags '-s' techotrix.go
+
 I build it with static linking to put it in a docker image.
 
 Build docker image as follows
 
-    docker build -t asia.gcr.io/silver-lead-205101/techotrix .
+    docker build -t chanuka_techo/techotrix .
 
-Run docker container as follows (This works even if you didn't build since I've
-pushed [my image](https://registry.hub.docker.com/u/chanux/advgo/) to docker
-hub)
+And run..
 
-    docker run -it --rm -p 9000:9000 asia.gcr.io/silver-lead-205101/techotrix
+    docker run -it --rm -p 9000:9000 chanuka_techo/techotrix
 
-You can check it as same as before.
+To test
+
+    curl localhost:9000
